@@ -2,7 +2,7 @@
 
 [My Notes](notes.md)
 
-A brief description of the application here. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+A simple word game very similar to wordle but with extra funtionality.
 
 
 > [!NOTE]
@@ -13,51 +13,44 @@ A brief description of the application here. Lorem ipsum dolor sit amet, consect
 
 ## 🚀 Specification Deliverable
 
-> [!NOTE]
->  Fill in this sections as the submission artifact for this deliverable. You can refer to this [example](https://github.com/webprogramming260/startup-example/blob/main/README.md) for inspiration.
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] Proper use of Markdown
-- [ ] A concise and compelling elevator pitch
-- [ ] Description of key features
-- [ ] Description of how you will use each technology
-- [ ] One or more rough sketches of your application. Images must be embedded in this file using Markdown image references.
+- [x] Proper use of Markdown
+- [x] A concise and compelling elevator pitch
+- [x] Description of key features
+- [x] Description of how you will use each technology
+- [x] One or more rough sketches of your application. Images must be embedded in this file using Markdown image references.
 
 ### Elevator pitch
 
-Kotoba is a fun word game where everyday a random 6 letter word is chosen. Players then have 6 tries to guess the word. When they get the word wrong Kotoba will tell them if any letters were correct and in the correct spot or correct and in the wrong spot. Because the word is the same for everyone, players can compete against their friends to see who can guess the word in the least attempts.
+Kotoba is a simple fun word game where everyday a random 6 letter word is chosen. Players then have 6 tries to guess the word. When they get the word wrong Kotoba will tell them if any letters were correct and in the correct spot or correct and in the wrong spot. Because the word is the same for everyone, players can compete against their friends to see who can guess the word in the least attempts.
 
 ### Design
 
 ![Design Sketch](https://github.com/user-attachments/assets/97bcbef5-208d-4bc4-ab74-285882a4b840)
 
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-
-```mermaid
-sequenceDiagram
-    actor You
-    actor Website
-    You->>Website: Replace this with your design
-```
 
 ### Key features
 
-- Describe your key feature
-- Describe your key feature
-- Describe your key feature
+- Random six letter word chosen every day
+- System to guess and show which letters are correct and in the right location for every guess
+- Visual grid to show how many guesses are left
+- Ability to track how many people have solved the daily word displayed in real time
+- Tracks each player so refreshing the page keeps your guesses for the day
+- Ability to do practice words that aren't the daily word
 
 ### Technologies
 
 I am going to use the required technologies in the following ways.
 
-- **HTML** - Description here
-- **CSS** - Description here
-- **React** - Description here
-- **Service** - Description here
-- **DB/Login** - Description here
-- **WebSocket** - Description here
+- **HTML** - For structure of application. Two pages, one for the daily word and one for the practice words.
+- **CSS** - For styling the page and displaying the correct colors for correct and incorrect letters.
+- **React** - Displays how many people have solved the daily word.
+- **Service** - Keeps track of what the daily word is and changes it to a new random word every day. Also keeps track of how many users have solved the daily word.
+- **DB/Login** - Stores users and keeps track of users guesses for the day. Users can't refresh page to get new set of guesses.
+- **WebSocket** - As more people solve the daily word the counter will increase for everyone.
 
 ## 🚀 AWS deliverable
 
