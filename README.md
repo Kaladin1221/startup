@@ -47,8 +47,8 @@ I am going to use the required technologies in the following ways.
 
 - **HTML** - For structure of application. Two pages, one for the daily word and one for the practice words.
 - **CSS** - For styling the page and displaying the correct colors for correct and incorrect letters.
-- **React** - Displays how many people have solved the daily word.
-- **Service** - Keeps track of what the daily word is and changes it to a new random word every day. Also keeps track of how many users have solved the daily word.
+- **React** - Displays how many people have solved the daily word. Use this to create the grid and show letters on the screen
+- **Service** - Access a database of all words to keep track of what the daily word is and changes it to a new random word every day. Also keeps track of how many users have solved the daily word.
 - **DB/Login** - Stores users and keeps track of users guesses for the day. Users can't refresh page to get new set of guesses.
 - **WebSocket** - As more people solve the daily word the counter will increase for everyone.
 
