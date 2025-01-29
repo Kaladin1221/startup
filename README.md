@@ -62,15 +62,15 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **HTML pages** - I did not complete this part of the deliverable.
-- [ ] **Proper HTML element usage** - I did not complete this part of the deliverable.
-- [ ] **Links** - I did not complete this part of the deliverable.
-- [ ] **Text** - I did not complete this part of the deliverable.
-- [ ] **3rd party API placeholder** - I did not complete this part of the deliverable.
-- [ ] **Images** - I did not complete this part of the deliverable.
-- [ ] **Login placeholder** - I did not complete this part of the deliverable.
-- [ ] **DB data placeholder** - I did not complete this part of the deliverable.
-- [ ] **WebSocket placeholder** - I did not complete this part of the deliverable.
+- [x] **HTML pages** - I created 3 pages: A home page, a play page, and an about page
+- [x] **Proper HTML element usage** - I did this
+- [x] **Links** - Added a link to my github and links between the pages
+- [x] **Text** - I did this
+- [ ] **3rd party API placeholder** - The word of the day will be chosen from a 3rd party database and displayed when the user correctly guesses the word in the table
+- [x] **Images** - I added an image but the final project won't need one
+- [x] **Login placeholder** - I just added a name but for the finale project I don't want people to have to sign in
+- [x] **DB data placeholder** - I did this with the random word being chosen every day behind the scenes 
+- [x] **WebSocket placeholder** - The times solved today will update every time someone solves it and push it to everyones screen
 
 ## 🚀 CSS deliverable
 
