@@ -1,0 +1,50 @@
+
+table{
+    border-spacing: 5em 5em;
+}
+.square{
+    text-align: center;
+    
+    width: 50px;
+    
+    border-style: solid;
+    border-width: 5px;
+    
+
+    
+    
+    
+}
+
+.times-solved{
+  flex: 1;
+  width: 100%;
+  padding: 0.5em;
+}
+
+.game{
+    position: absolute;
+  
+  
+  
+  padding: 2em;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: column;
+}
+
+.table-pos{
+    padding: 2em;
+}
+
+.center {
+    top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+
+    
+  
+  }
+
+  
