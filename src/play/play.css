@@ -56,3 +56,16 @@ transform: translateX(-50%) translateY(-50%);
   
 
 }
+
+.square.correct {
+  background-color: green;
+  color: white;
+}
+.square.present {
+  background-color: yellow;
+  color: black;
+}
+.square.absent {
+  background-color: grey;
+  color: white;
+}
