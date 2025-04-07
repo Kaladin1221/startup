@@ -8,7 +8,8 @@ const authCookieName = 'token';
 
 // The scores and users are saved in memory and disappear whenever the service is restarted.
 let users = [];
-let words = [];
+let words = ["Apple","Bread","Ratio","Snare","Quack"];
+let wordOfTheDay = "";
 
 
 // The service port. In production the front-end code is statically hosted by the service on the same port.
@@ -73,9 +74,17 @@ const verifyAuth = async (req, res, next) => {
   }
 };
 
-apiRouter.get('/about', (_req, res) => {
-  res.send(words)
+apiRouter.get('/wordOfTheDay', verifyAuth, (_req, res) => {
+  if (wordOfTheDay == ''){
+    const randomIndex = Math.floor(Math.random() * words.length)
+    wordOfTheDay= words[randomIndex];
+    
+  }
+  res.json({ word: wordOfTheDay });
+  
 })
+
+
 
 
 // Default error handler

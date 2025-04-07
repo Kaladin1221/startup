@@ -4,17 +4,18 @@ import './about.css';
 export function About() {
   // Runs once when the component mounts
 
-  const [word, setWord] = React.useState([]);
+  const [wordOftheDay, getWord] = React.useState('');
 
-  // Demonstrates calling a service asynchronously so that
-  // React can properly update state objects with the results.
   React.useEffect(() => {
-    fetch('/api/about')
-      .then((response) => response.json())
-      .then((words) => {
-        setWord(words[0]);
-      });
-  }, []);
+    fetch('/api/wordOfTheDay')
+  .then(response => response.json())
+  .then(wordOftheDay => {
+    getWord(wordOftheDay);
+  })
+  .catch(error => {
+    console.error('Error fetching words:', error);
+  });
+  }, []); 
 
   return (
     <main className="container-fluid bg-dark text-center text-white">
@@ -36,7 +37,7 @@ export function About() {
 
         <div id="dailyword" className="dailyword-box bg-dark text-light">
         <p className="quote">
-          Today's daily word was: {word}
+          Today's daily word was: {wordOftheDay.word}
         </p>
       </div>
     </div>
