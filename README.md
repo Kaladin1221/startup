@@ -104,7 +104,7 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 - [x] **Node.js/Express HTTP service** - Done
 - [x] **Static middleware for frontend** - Done
-- [x] **Calls to third party endpoints** - Done
+- [x] **Calls to third party endpoints** - Gets defintions for the words from a third party api and displays them in about
 - [x] **Backend service endpoints** - List with possible words to randomly choose from
 - [x] **Frontend calls service endpoints** - Grabs one of the words and makes it the word of the day for the play section also displays what that word is in the about section.
 
