@@ -8,7 +8,7 @@ const authCookieName = 'token';
 
 // The scores and users are saved in memory and disappear whenever the service is restarted.
 let users = [];
-let words = ["APPLE","BREAD","RATIO","SNARE","QUACK"];
+let words = ["ABOUT","OTHER","WHICH","THEIR","THERE","THESE","WOULD","COULD","THOSE","WHERE","BEING","THREE","NEVER","AFTER","AGAIN","GREAT","SMALL","EVERY","WORLD","STILL","WHILE","RIGHT","UNDER","PLACE","MIGHT","HOUSE","POINT","TIMES","THING","FOUND","STATE","POWER","ABOVE","BELOW","GIVEN","LIGHT","MEANS","GROUP","EARLY","LARGE","OFTEN","MONEY","TODAY","SHORT","STORY","WORDS","HEART","BLACK","WHITE"];
 let wordOfTheDay = "";
 
 

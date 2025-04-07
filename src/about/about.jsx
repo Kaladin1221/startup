@@ -4,7 +4,8 @@ import './about.css';
 export function About() {
   // Runs once when the component mounts
 
-  const [wordOftheDay, getWord] = React.useState('');
+  const [wordOfTheDay, getWord] = React.useState('');
+  const [definition, setDefinition] = React.useState('Loading...');
 
   React.useEffect(() => {
     fetch('/api/wordOfTheDay')
@@ -15,7 +16,18 @@ export function About() {
   .catch(error => {
     console.error('Error fetching words:', error);
   });
-  }, []); 
+}, []); 
+
+React.useEffect(() => {
+  fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${wordOfTheDay.word}`)
+      .then((response) => response.json())
+      .then((data) => {
+        setDefinition(data[0]?.meanings[0]?.definitions[0]?.definition || 'Definition not found');
+        
+      })
+      .catch();
+    }, [wordOfTheDay]); 
+  
 
   return (
     <main className="container-fluid bg-dark text-center text-white">
@@ -37,7 +49,10 @@ export function About() {
 
         <div id="dailyword" className="dailyword-box bg-dark text-light">
         <p className="quote">
-          Today's daily word was: {wordOftheDay.word}
+          Today's daily word is: {wordOfTheDay.word}
+        </p>
+        <p className="definition">
+          The definition of this word is: {definition}
         </p>
       </div>
     </div>

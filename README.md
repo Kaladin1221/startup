@@ -95,7 +95,7 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [x] **All functionality implemented or mocked out** - I did this
+- [x] **All functionality implemented or mocked out** - I made the reactive parts for the game, I created the logic for checking if a word is correct and if the letters are in the right position or not
 - [x] **Hooks** - I did this
 
 ## 🚀 Service deliverable
@@ -105,8 +105,8 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 - [x] **Node.js/Express HTTP service** - Done
 - [x] **Static middleware for frontend** - Done
 - [x] **Calls to third party endpoints** - Done
-- [x] **Backend service endpoints** - Done
-- [x] **Frontend calls service endpoints** - Done
+- [x] **Backend service endpoints** - List with possible words to randomly choose from
+- [x] **Frontend calls service endpoints** - Grabs one of the words and makes it the word of the day for the play section also displays what that word is in the about section.
 
 ## 🚀 DB/Login deliverable
 
