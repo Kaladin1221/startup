@@ -3,8 +3,7 @@ import React, { useState, useEffect } from 'react';
 const WORD_LENGTH = 5;
 const MAX_GUESSES = 5;
 
-
-const TARGET_WORD = "REACT"; // Change this to a word of your choice or select randomly
+ // Change this to a word of your choice or select randomly
 
 // Helper function to evaluate a guess against the target word
 function evaluateGuess(guess, target) {
@@ -29,6 +28,19 @@ function evaluateGuess(guess, target) {
 }
 
 const WordleGame = () => {
+  const [wordOftheDay, getWord] = React.useState('');
+  React.useEffect(() => {
+      fetch('/api/wordOfTheDay')
+    .then(response => response.json())
+    .then(wordOftheDay => {
+      getWord(wordOftheDay);
+    })
+    .catch(error => {
+      console.error('Error fetching words:', error);
+    });
+    }, []); 
+
+    const TARGET_WORD = wordOftheDay.word;
   // Create a board state: an array of rows, each row is an array of letters.
   const [guesses, setGuesses] = useState(
     Array(MAX_GUESSES).fill(null).map(() => Array(WORD_LENGTH).fill(''))

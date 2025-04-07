@@ -8,7 +8,7 @@ const authCookieName = 'token';
 
 // The scores and users are saved in memory and disappear whenever the service is restarted.
 let users = [];
-let words = ["Apple","Bread","Ratio","Snare","Quack"];
+let words = ["APPLE","BREAD","RATIO","SNARE","QUACK"];
 let wordOfTheDay = "";
 
 
