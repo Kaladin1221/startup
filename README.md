@@ -116,7 +116,7 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 - [x] **User login and logout** - I did this
 - [x] **Stores data in MongoDB** - I store the word of the day so that it persists across all devices and updates the word daily.
 - [x] **Stores credentials in MongoDB** - I did this
-- [x] **Restricts functionality based on authentication** - I did this
+- [x] **Restricts functionality based on authentication** - I did this you cant play the game unless you login.
 
 ## 🚀 WebSocket deliverable
 
