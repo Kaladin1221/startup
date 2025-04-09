@@ -40,7 +40,7 @@ const WordleGame = () => {
     });
     }, []); 
 
-    const TARGET_WORD = wordOftheDay.word;
+    const TARGET_WORD = wordOftheDay.wordOfTheDay;
   // Create a board state: an array of rows, each row is an array of letters.
   const [guesses, setGuesses] = useState(
     Array(MAX_GUESSES).fill(null).map(() => Array(WORD_LENGTH).fill(''))

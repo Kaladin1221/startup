@@ -3,16 +3,11 @@ const bcrypt = require('bcryptjs');
 const express = require('express');
 const uuid = require('uuid');
 const app = express();
+const DB = require('./database.js');
 
 const authCookieName = 'token';
 
-// The scores and users are saved in memory and disappear whenever the service is restarted.
-let users = [];
-let words = ["ABOUT","OTHER","WHICH","THEIR","THERE","THESE","WOULD","COULD","THOSE","WHERE","BEING","THREE","NEVER","AFTER","AGAIN","GREAT","SMALL","EVERY","WORLD","STILL","WHILE","RIGHT","UNDER","PLACE","MIGHT","HOUSE","POINT","TIMES","THING","FOUND","STATE","POWER","ABOVE","BELOW","GIVEN","LIGHT","MEANS","GROUP","EARLY","LARGE","OFTEN","MONEY","TODAY","SHORT","STORY","WORDS","HEART","BLACK","WHITE"];
-let wordOfTheDay = "";
-
-
-// The service port. In production the front-end code is statically hosted by the service on the same port.
+// The service port may be set on the command line
 const port = process.argv.length > 2 ? process.argv[2] : 4000;
 
 // JSON body parsing using built-in middleware
@@ -21,14 +16,14 @@ app.use(express.json());
 // Use the cookie parser middleware for tracking authentication tokens
 app.use(cookieParser());
 
-// Serve up the front-end static content hosting
+// Serve up the applications static content
 app.use(express.static('public'));
 
 // Router for service endpoints
-var apiRouter = express.Router();
+const apiRouter = express.Router();
 app.use(`/api`, apiRouter);
 
-// CreateAuth a new user
+// CreateAuth token for a new user6
 apiRouter.post('/auth/create', async (req, res) => {
   if (await findUser('email', req.body.email)) {
     res.status(409).send({ msg: 'Existing user' });
@@ -40,12 +35,13 @@ apiRouter.post('/auth/create', async (req, res) => {
   }
 });
 
-// GetAuth login an existing user
+// GetAuth token for the provided credentials
 apiRouter.post('/auth/login', async (req, res) => {
   const user = await findUser('email', req.body.email);
   if (user) {
     if (await bcrypt.compare(req.body.password, user.password)) {
       user.token = uuid.v4();
+      await DB.updateUser(user);
       setAuthCookie(res, user.token);
       res.send({ email: user.email });
       return;
@@ -54,11 +50,12 @@ apiRouter.post('/auth/login', async (req, res) => {
   res.status(401).send({ msg: 'Unauthorized' });
 });
 
-// DeleteAuth logout a user
+// DeleteAuth token if stored in cookie
 apiRouter.delete('/auth/logout', async (req, res) => {
   const user = await findUser('token', req.cookies[authCookieName]);
   if (user) {
     delete user.token;
+    DB.updateUser(user);
   }
   res.clearCookie(authCookieName);
   res.status(204).end();
@@ -74,18 +71,16 @@ const verifyAuth = async (req, res, next) => {
   }
 };
 
-apiRouter.get('/wordOfTheDay', verifyAuth, (_req, res) => {
-  if (wordOfTheDay == ''){
-    const randomIndex = Math.floor(Math.random() * words.length)
-    wordOfTheDay= words[randomIndex];
-    
-  }
-  res.json({ word: wordOfTheDay });
+// GetScores
+
+apiRouter.get('/wordOfTheDay', verifyAuth, async (_req, res) => {
+  const wordOfTheDay = await DB.getWordOfTheDay();
+  console.log("This is apiRouter.get right before send the word")
+  console.trace();
+  console.log({wordOfTheDay})  
+  res.send({ wordOfTheDay });
   
-})
-
-
-
+});
 
 // Default error handler
 app.use(function (err, req, res, next) {
@@ -97,7 +92,6 @@ app.use((_req, res) => {
   res.sendFile('index.html', { root: 'public' });
 });
 
-// updateScores considers a new score for inclusion in the high scores.
 
 
 async function createUser(email, password) {
@@ -108,7 +102,7 @@ async function createUser(email, password) {
     password: passwordHash,
     token: uuid.v4(),
   };
-  users.push(user);
+  await DB.addUser(user);
 
   return user;
 }
@@ -116,7 +110,10 @@ async function createUser(email, password) {
 async function findUser(field, value) {
   if (!value) return null;
 
-  return users.find((u) => u[field] === value);
+  if (field === 'token') {
+    return DB.getUserByToken(value);
+  }
+  return DB.getUser(value);
 }
 
 // setAuthCookie in the HTTP response
@@ -128,6 +125,6 @@ function setAuthCookie(res, authToken) {
   });
 }
 
-app.listen(port, () => {
+const httpService = app.listen(port, () => {
   console.log(`Listening on port ${port}`);
 });

@@ -8,6 +8,7 @@ export function About() {
   const [definition, setDefinition] = React.useState('Loading...');
 
   React.useEffect(() => {
+    console.log("this is the about file right before it calls for the word from database")
     fetch('/api/wordOfTheDay')
   .then(response => response.json())
   .then(wordOftheDay => {
@@ -19,7 +20,7 @@ export function About() {
 }, []); 
 
 React.useEffect(() => {
-  fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${wordOfTheDay.word}`)
+  fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${wordOfTheDay.wordOfTheDay}`)
       .then((response) => response.json())
       .then((data) => {
         setDefinition(data[0]?.meanings[0]?.definitions[0]?.definition || 'Definition not found');
@@ -28,7 +29,9 @@ React.useEffect(() => {
       .catch();
     }, [wordOfTheDay]); 
   
-
+    //console.log("the word of the day is in the about function not using .word ",wordOfTheDay)
+    
+    //console.log("using .wordOfTheDay",wordOfTheDay.wordOfTheDay)
   return (
     <main className="container-fluid bg-dark text-center text-white">
       <div>
@@ -48,8 +51,10 @@ React.useEffect(() => {
         </p>
 
         <div id="dailyword" className="dailyword-box bg-dark text-light">
+          
         <p className="quote">
-          Today's daily word is: {wordOfTheDay.word}
+          
+          Today's daily word is: {wordOfTheDay.wordOfTheDay}
         </p>
         <p className="definition">
           The definition of this word is: {definition}
