@@ -3,8 +3,6 @@ import React, { useState, useEffect } from 'react';
 const WORD_LENGTH = 5;
 const MAX_GUESSES = 5;
 
- // Change this to a word of your choice or select randomly
-
 // Helper function to evaluate a guess against the target word
 function evaluateGuess(guess, target) {
   let result = Array(WORD_LENGTH).fill('absent');
