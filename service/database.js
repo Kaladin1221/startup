@@ -48,19 +48,25 @@ function isDateToday(date){
 
 
 async function getWordOfTheDay(){
-    const wordOfTheDay = "SPEAR"
-    return wordOfTheDay
+    
+    
+    let result;
+    
     if (wordDate === ""){
         wordDate = new Date();
-        const wordOfTheDay = await wordCollection.aggregate([{ $sample: { size: 1 } }]).toArray();
-        
+        result = await wordCollection.aggregate([{ $sample: { size: 1 } }]).toArray();
+        wordOfTheDay = result[0].word;
     }
     if (!isDateToday(wordDate)){
-        const wordOfTheDay = await wordCollection.aggregate([{ $sample: { size: 1 } }]).toArray();
+        result = await wordCollection.aggregate([{ $sample: { size: 1 } }]).toArray();
+        wordOfTheDay = result[0].word;
         
-        wordDate = new Date()
+        wordDate = new Date();
         
     }
+    
+    
+    
     return wordOfTheDay;
     
     

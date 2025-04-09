@@ -74,10 +74,7 @@ const verifyAuth = async (req, res, next) => {
 // GetScores
 
 apiRouter.get('/wordOfTheDay', verifyAuth, async (_req, res) => {
-  const wordOfTheDay = await DB.getWordOfTheDay();
-  console.log("This is apiRouter.get right before send the word")
-  console.trace();
-  console.log({wordOfTheDay})  
+  const wordOfTheDay = await DB.getWordOfTheDay();  
   res.send({ wordOfTheDay });
   
 });

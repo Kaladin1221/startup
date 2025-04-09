@@ -28,19 +28,22 @@ function evaluateGuess(guess, target) {
 }
 
 const WordleGame = () => {
-  const [wordOftheDay, getWord] = React.useState('');
-  React.useEffect(() => {
-      fetch('/api/wordOfTheDay')
-    .then(response => response.json())
-    .then(wordOftheDay => {
-      getWord(wordOftheDay);
-    })
-    .catch(error => {
-      console.error('Error fetching words:', error);
-    });
-    }, []); 
+  const [wordOfTheDay, getWord] = React.useState('');
+  
 
-    const TARGET_WORD = wordOftheDay.wordOfTheDay;
+  React.useEffect(() => {
+    console.log("this is the about file right before it calls for the word from database")
+    fetch('/api/wordOfTheDay')
+  .then(response => response.json())
+  .then(wordOftheDay => {
+    getWord(wordOftheDay);
+  })
+  .catch(error => {
+    console.error('Error fetching words:', error);
+  });
+}, []); 
+
+    const TARGET_WORD = wordOfTheDay.wordOfTheDay;
   // Create a board state: an array of rows, each row is an array of letters.
   const [guesses, setGuesses] = useState(
     Array(MAX_GUESSES).fill(null).map(() => Array(WORD_LENGTH).fill(''))
